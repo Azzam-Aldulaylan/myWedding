@@ -16,8 +16,8 @@ const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 const isMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 0;
  
 if (isIOS || isMac) {
-  const blob = new Blob([ICS], { type: 'text/calendar;charset=utf-8' });
-  location.href = URL.createObjectURL(blob);
+  // Use data URI — iOS Safari opens this directly in Apple Calendar, no blob download dialog
+  location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ICS);
 } else {
   location.href = GOOGLE;
 }
