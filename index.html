@@ -7,21 +7,19 @@
 </head>
 <body>
 <script>
-const ICS = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Wedding Invite//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nX-WR-CALNAME:زواج عزام الدليلان\r\nBEGIN:VEVENT\r\nUID:wedding-azzam-aldlailaan-2026@invite\r\nDTSTAMP:20260420T000000Z\r\nDTSTART;TZID=Asia/Riyadh:20260606T193000\r\nDTEND;TZID=Asia/Riyadh:20260607T000000\r\nSUMMARY:زواج عزام الدليلان\r\nDESCRIPTION:يسعدني ويشرفني حضوركم\r\nLOCATION:قاعة الضيافة - قاعة أرجان، بريدة\r\nBEGIN:VALARM\r\nTRIGGER:-P1D\r\nACTION:DISPLAY\r\nDESCRIPTION:تذكير: زواج عزام الدليلان غداً\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR`;
- 
+const ICS_URL = 'https://azzam-aldulaylan.github.io/myWedding/wedding.ics';
 const GOOGLE = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=زواج+عزام+الدليلان&dates=20260606T163000Z/20260606T210000Z&details=يسعدني+ويشرفني+حضوركم&location=قاعة+الضيافة+-+قاعة+أرجان،+بريدة";
- 
+
 const ua = navigator.userAgent;
 const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 const isMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 0;
- 
+
 if (isIOS || isMac) {
-  // Use data URI — iOS Safari opens this directly in Apple Calendar, no blob download dialog
-  location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ICS);
+  // Direct .ics file link — iOS Safari opens this in Apple Calendar automatically
+  location.href = ICS_URL;
 } else {
   location.href = GOOGLE;
 }
 </script>
 </body>
 </html>
- 
